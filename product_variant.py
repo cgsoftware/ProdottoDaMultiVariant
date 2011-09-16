@@ -80,7 +80,7 @@ class crea_articolo(osv.osv_memory):
             des_var = desvar + variante.Dimensione_id.name + ":" + variante.valore_id.name
             extra_prezzo = extra_prezzo + variante.valore_id.price_extra
             lista_variant_value.append(variante.valore_id.id)
-            #import pdb;pdb.set_trace()
+        #import pdb;pdb.set_trace()
         Prodotto = {
                     'product_tmpl_id':car_art.name.id,
                     'dimension_value_ids': [(6, 0, tuple(lista_variant_value))],
@@ -94,11 +94,13 @@ class crea_articolo(osv.osv_memory):
         # Articolo = self.pool.get('product.product').browse(cr, uid, [id_Articolo])
         #import pdb;pdb.set_trace()
         ''' MEMENTANEAMENTE IN COMMENTO IN MODO CHE LA CREAZIONE DELLA DISTINTA ABBIA UN ULTERIORE 
-        PASSAGGIO IN WIZARD E CHE LA GENERAZIONE DELLA DISTINTA A WIZARD  POSSA ESSERE LANCIATA SEPARATAMENTE
-        
-        id_crea = self.pool.get('crea.distinta').create(cr, uid, {'articolo_id':id_Articolo}, {})
-        ok = self.pool.get('crea.distinta').genera(cr, uid, [id_crea], context=None)
-        ''' 
+        #PASSAGGIO IN WIZARD E CHE LA GENERAZIONE DELLA DISTINTA A WIZARD  POSSA ESSERE LANCIATA SEPARATAMENTE
+        if id_Articolo:
+		Crea = self.pool.get('crea.distinta').onchange_articolo(cr, uid, ids, id_Articolo)
+		if Crea:
+        		id_crea = self.pool.get('crea.distinta').create(cr, uid, Crea , {})
+       			ok = self.pool.get('crea.distinta').genera(cr, uid, [id_crea], context=None)
+        '''
         context.update({'product_id':id_Articolo})
         return {
             'name': _('Prodotto'),
