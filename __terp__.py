@@ -24,7 +24,7 @@
     "category" : "Varianti",
     "description":"""Wizard di creazione di un singolo prodotto partendo dalla sua lista varianti.
     """,
-    "depends" : ["base", "product", "product_variant_multi"],
+    "depends" : ["base", "product", "product_variant_multi", "Conai"],
     "init_xml" : [],
     "demo_xml" : [],
     "update_xml" : [ "product_variant.xml"],

@@ -87,6 +87,9 @@ class crea_articolo(osv.osv_memory):
                     'default_code':codice_product + "-" + car_art.marchio_id.name,
                     'marchio_ids':car_art.marchio_id.id,
                     'price_extra':extra_prezzo,
+                    'production_conai_peso':Template.production_peso,
+                    'peso_prod':Template.production_peso,
+
 
                     }
         id_Articolo = self.pool.get('product.product').create(cr, uid, Prodotto, {})
@@ -101,17 +104,19 @@ class crea_articolo(osv.osv_memory):
         		id_crea = self.pool.get('crea.distinta').create(cr, uid, Crea , {})
        			ok = self.pool.get('crea.distinta').genera(cr, uid, [id_crea], context=None)
         '''
-        context.update({'product_id':id_Articolo})
+        
+        context.update({'active_ids':[id_Articolo]})
         return {
-            'name': _('Prodotto'),
+            'name': 'Genera Distinta Base',
             'view_type': 'form',
-            'view_mode': 'form,tree',
-            'res_model': 'product.product',
-            'res_id':context['product_id'],
-            'view_id': False,
-            'context': context,
+            'view_mode': 'form',
+            'res_model': 'crea.distinta',
             'type': 'ir.actions.act_window',
-         }
+            'target': 'new',
+            'context': context
+        }
+        
+
         
         # return {'type': 'ir.actions.act_window_close'}
     

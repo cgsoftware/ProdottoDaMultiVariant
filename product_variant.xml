@@ -1,4 +1,5 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <openerp>
     <data>
         <record id="view_crea_articolo" model="ir.ui.view">
@@ -51,7 +52,23 @@
             key2="client_action_multi"
             id="view_crea_articolo"/>
         
- 
+         <record id="action_gen_art_form" model="ir.actions.act_window">
+            <field name="name">Genera Articolo con Varianti</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crea.articolo</field>
+            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem name="Crea Articolo con Varianti" 
+            icon="STOCK_JUSTIFY_FILL" 
+            id="menu_crea_bustapz" 
+            parent="base.menu_product" 
+            action="action_gen_art_form"
+            sequence="1"
+        />   
+            
         
     </data>
 </openerp>
