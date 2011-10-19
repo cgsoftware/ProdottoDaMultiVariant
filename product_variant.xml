@@ -11,6 +11,9 @@
                 <group col="10" colspan="4">
                     <field name="name" on_change="onchange_modello(name)"/>  
                     <field name="marchio_id" on_change="onchange_modello(name)"/>  
+                    <newline></newline>
+                    <field name="adhoc_code"/>
+                    
                 </group>
                     <separator colspan="4"/>
                     <field name="elenco_varianti" colspan="4" mode="tree"  nolabel="1" widget="one2many_list" width="550" height="200">

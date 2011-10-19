@@ -23,6 +23,7 @@ class crea_articolo(osv.osv_memory):
                 'name': fields.many2one('product.template', 'Modello', required=True),
                 'elenco_varianti':fields.one2many('crea.articolo.righe', 'testa', 'Righe Varianti Utilizzabili'),
                 'marchio_id':fields.many2one('marchio.marchio', 'Marca', required=True),
+                'adhoc_code': fields.char('Cod.Art.Ad-Hoc', size=15),
          }
     
     def _get_modello(self, cr, uid, context=None):
@@ -89,6 +90,7 @@ class crea_articolo(osv.osv_memory):
                     'price_extra':extra_prezzo,
                     'production_conai_peso':Template.production_peso,
                     'peso_prod':Template.production_peso,
+                    'adhoc_code':car_art.adhoc_code,
 
 
                     }
