@@ -85,7 +85,9 @@ class crea_articolo(osv.osv_memory):
         Prodotto = {
                     'product_tmpl_id':car_art.name.id,
                     'dimension_value_ids': [(6, 0, tuple(lista_variant_value))],
-                    'default_code':codice_product + "-" + car_art.marchio_id.name,
+                    'codice_template':car_art.name.codice_template,
+                    'default_code':False,
+        #codice_product + "-" + car_art.marchio_id.name,
                     'marchio_ids':car_art.marchio_id.id,
                     'price_extra':extra_prezzo,
                     'production_conai_peso':Template.production_peso,
